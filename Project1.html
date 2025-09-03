@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Shopping App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 2rem;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 250px;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .product h3 {
+      margin: 10px 0;
+    }
+
+    .product p {
+      color: green;
+      font-weight: bold;
+    }
+
+    .btn {
+      background-color: #27ae60;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #219150;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Online Store</h1>
+  </header>
+
+  <div class="container">
+    <!-- Product 1 -->
+    <div class="product">
+      <img src="https://via.placeholder.com/250x200?text=Product+1" alt="Product 1">
+      <h3>Cool Sneakers</h3>
+      <p>$49.99</p>
+      <button class="btn" onclick="addToCart('Cool Sneakers')">Add to Cart</button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product">
+      <img src="https://via.placeholder.com/250x200?text=Product+2" alt="Product 2">
+      <h3>Stylish Watch</h3>
+      <p>$79.99</p>
+      <button class="btn" onclick="addToCart('Stylish Watch')">Add to Cart</button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product">
+      <img src="https://via.placeholder.com/250x200?text=Product+3" alt="Product 3">
+      <h3>Leather Bag</h3>
+      <p>$59.99</p>
+      <button class="btn" onclick="addToCart('Leather Bag')">Add to Cart</button>
+    </div>
+  </div>
+
+  <script>
+    function addToCart(productName) {
+      alert(productName + " added to cart!");
+    }
+  </script>
+
+</body>
+</html>
 
