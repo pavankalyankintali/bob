@@ -1,111 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Online Shopping App</title>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Meesho_Logo_Full.png" aly="hii">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organic Mart</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 0;
-    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px 10px;
+      text-align: center;
+    }
 
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
+    nav {
+      display: flex;
+      justify-content: space-around;
+      background-color: #388E3C;
+      padding: 10px;
+      color: white;
+    }
 
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 2rem;
-      justify-content: center;
-      gap: 20px;
-    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+    }
 
-    .product {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      width: 250px;
-      padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+    nav a:hover {
+      background-color: #2E7D32;
+      border-radius: 5px;
+    }
 
-    .product img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 5px;
-    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
 
-    .product h3 {
-      margin: 10px 0;
-    }
+    .product {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin: 15px;
+      width: 250px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
 
-    .product p {
-      color: green;
-      font-weight: bold;
-    }
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
 
-    .btn {
-      background-color: #27ae60;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+    .product h3 {
+      margin: 10px 0 5px;
+    }
 
-    .btn:hover {
-      background-color: #219150;
-    }
-  </style>
+    .product p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .price {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    .search-bar {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .search-bar input {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <h1>My Online Store</h1>
-  </header>
+  <header>
+    <h1>Organic Mart</h1>
+    <p>Fresh | Natural | Delivered to Your Doorstep</p>
+  </header>
 
-  <div class="container">
-    <!-- Product 1 -->
-    <div class="product">
-      <img src="https://via.placeholder.com/250x200?text=Product+1" alt="Product 1">
-      <h3>Cool Sneakers</h3>
-      <p>$49.99</p>
-      <button class="btn" onclick="addToCart('Cool Sneakers')">Add to Cart</button>
-    </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Vegetables</a>
+    <a href="#">Milk Products</a>
+    <a href="#">Ice Creams</a>
+    <a href="#">Cart</a>
+    <a href="#">Contact</a>
+  </nav>
 
-    <!-- Product 2 -->
-    <div class="product">
-      <img src="https://via.placeholder.com/250x200?text=Product+2" alt="Product 2">
-      <h3>Stylish Watch</h3>
-      <p>$79.99</p>
-      <button class="btn" onclick="addToCart('Stylish Watch')">Add to Cart</button>
-    </div>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search for products..." onkeyup="searchProducts()">
+  </div>
 
-    <!-- Product 3 -->
-    <div class="product">
-      <img src="https://via.placeholder.com/250x200?text=Product+3" alt="Product 3">
-      <h3>Leather Bag</h3>
-      <p>$59.99</p>
-      <button class="btn" onclick="addToCart('Leather Bag')">Add to Cart</button>
-    </div>
-  </div>
+  <div class="container" id="productContainer">
 
-  <script>
-    function addToCart(productName) {
-      alert(productName + " added to cart!");
-    }
-  </script>
+    <!-- Organic Vegetables -->
+    <div class="product">
+      <img src="https://via.placeholder.com/250x180?text=Organic+Tomatoes" alt="Tomatoes">
+      <h3>Organic Tomatoes</h3>
+      <p>Fresh from local farms</p>
+      <div class="price">₹60/kg</div>
+      <button class="btn">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x180?text=Organic+Spinach" alt="Spinach">
+      <h3>Organic Spinach</h3>
+      <p>Rich in Iron & Fiber</p>
+      <div class="price">₹40/bundle</div>
+      <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- Milk Products -->
+    <div class="product">
+      <img src="https://via.placeholder.com/250x180?text=Pure+Cow+Milk" alt="Cow Milk">
+      <h3>Pure Cow Milk</h3>
+      <p>Farm fresh and unprocessed</p>
+      <div class="price">₹50/litre</div>
+      <button class="btn">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x180?text=Paneer" alt="Paneer">
+      <h3>Homemade Paneer</h3>
+      <p>Soft and delicious</p>
+      <div class="price">₹90/200g</div>
+      <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- Ice Creams -->
+    <div class="product">
+      <img src="https://via.placeholder.com/250x180?text=Mango+Ice+Cream" alt="Mango Ice Cream">
+      <h3>Mango Ice Cream</h3>
+      <p>Made from real mangoes</p>
+      <div class="price">₹120/500ml</div>
+      <button class="btn">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x180?text=Chocolate+Ice+Cream" alt="Chocolate Ice Cream">
+      <h3>Chocolate Ice Cream</h3>
+      <p>Rich and creamy</p>
+      <div class="price">₹110/500ml</div>
+      <button class="btn">Add to Cart</button>
+    </div>
+
+    <!-- Add more categories as needed -->
+    <div class="product">
+      <img src="https://via.placeholder.com/250x180?text=Organic+Honey" alt="Honey">
+      <h3>Organic Honey</h3>
+      <p>100% natural & unfiltered</p>
+      <div class="price">₹150/250ml</div>
+      <button class="btn">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/250x180?text=Desi+Ghee" alt="Desi Ghee">
+      <h3>Desi Ghee</h3>
+      <p>From grass-fed cows</p>
+      <div class="price">₹450/500ml</div>
+      <button class="btn">Add to Cart</button>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Organic Mart. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function searchProducts() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const products = document.querySelectorAll('.product');  products.forEach(product => {
+        const name = product.querySelector('h3').innerText.toLowerCase();
+        product.style.display = name.includes(input) ? 'block' : 'none';
+      });
+    }
+  </script>
 
 </body>
 </html>
-
